@@ -9,13 +9,11 @@ if __name__ == '__main__':
 
     parser.add_argument('files', nargs='*', help='''Files for watching.''')
 
-    parser.add_argument('-V', '--verbose', help='''Show which files changed.''')
-
     args = parser.parse_args()
 
-    if len(sys.argv) < 3:
-        print("Please, provide value for -V and at least one file for watching.")
+    if len(sys.argv) < 2:
+        print("Please, provide value at least one file for watching.")
         parser.print_help()
     else:
-        w = watchcat.Watchcat(args.verbose, *args.files).run_watching()
+        w = watchcat.Watchcat(*args.files).run_watching()
         sys.exit(0)

@@ -6,12 +6,11 @@ import time
 class Watchcat(object):
     """Our main class which watch all changes on files."""
 
-    def __init__(self, verbose=False, *files):
+    def __init__(self, *files):
         self.files = []
         self.mod_times = {}
         self._watching_thread = None
         self._watching_work = False
-        self.verbose = verbose
 
         if files:
             self.add_files(*files)
@@ -54,8 +53,7 @@ class Watchcat(object):
                 continue
 
             if last_mod_time > self.mod_times[file]:
-                if self.verbose:
-                    print("File changed: {}".format(os.path.realpath(file)))
+                print("File changed: {}".format(os.path.realpath(file)))
                 self.mod_times[file] = last_mod_time
 
     def add_files(self, *files):

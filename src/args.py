@@ -17,6 +17,5 @@ if __name__ == '__main__':
         print("Please, provide value for -V and at least one file for watching.")
         parser.print_help()
     else:
-        w = watchcat.Watchcat(args.verbose, *args.files)
-        w.run_watching()
+        w = watchcat.Watchcat(args.verbose, *args.files).run_watching()
         sys.exit(0)
